@@ -20,7 +20,7 @@ android:background="#00796B">
     android:background="#004C40"/>
 
 <ImageView
-    android:id="@+id/imgKot"
+    android:id="@+id/imgPhoto"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="3"
@@ -106,8 +106,7 @@ android:background="#00796B">
             android:id="@+id/switchBlue"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:size />
+            android:layout_marginStart="8dp"/>
     </LinearLayout>
 
     <TextView
