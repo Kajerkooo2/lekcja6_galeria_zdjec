@@ -1,8 +1,11 @@
 package com.example.program_galeria;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int[] images = { R.drawable.fox, R.drawable.ghost, R.drawable.ptak, R.drawable.wilk };
+    private int[] images = { R.drawable.fox, R.drawable.wilk, R.drawable.ghost, R.drawable.ptak };
     private int currentIndex = 0;
     private ImageView imgPhoto;
 
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         imgPhoto = findViewById(R.id.imgPhoto);
         Button btnNext = findViewById(R.id.btnNext);
         Button btnPrev = findViewById(R.id.btnPrev);
+        LinearLayout mainLayout = findViewById(R.id.mainLayout);
+        Switch switchBlue = findViewById(R.id.switchBlue);
 
         showImage();
 
@@ -44,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
             currentIndex--;
             if (currentIndex < 0) currentIndex = images.length - 1;
             showImage();
+        });
+
+        switchBlue.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                mainLayout.setBackgroundColor(Color.parseColor("#1565c0"));
+            } else {
+                mainLayout.setBackgroundColor(Color.parseColor("#00796B"));
+            }
         });
     }
 
