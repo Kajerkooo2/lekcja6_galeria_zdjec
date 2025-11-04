@@ -13,6 +13,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+
 public class MainActivity extends AppCompatActivity {
 
     private int[] images = { R.drawable.fox, R.drawable.wilk, R.drawable.ghost, R.drawable.ptak };
@@ -58,9 +62,38 @@ public class MainActivity extends AppCompatActivity {
                 mainLayout.setBackgroundColor(Color.parseColor("#00796B"));
             }
         });
+        EditText edtNumber = findViewById(R.id.edtNumber);
+
+        edtNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+              try{
+                  int value = Integer.parseInt(s.toString());
+                  if (value >= 1 && value <= images.length){
+                      currentIndex = value - 1;
+                      showImage();
+                  }
+              }catch (NumberFormatException e){
+
+              }
+            }
+
+
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     private void showImage() {
         imgPhoto.setImageResource(images[currentIndex]);
     }
 }
+
